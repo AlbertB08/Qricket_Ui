@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qricket</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen bg-gray-100">
+  <div class="flex h-screen flex-col md:flex-row">
+
+    <!-- LEFT SECTION -->
+    <div class="flex flex-1 flex-col items-center justify-center p-10 text-white" style="background: linear-gradient(135deg, #00B388 50%, #009970 100%);">
+      <h1 id="changing-text" class="text-3xl font-bold mb-2 transition-opacity duration-300">Welcome To Qricket</h1>
+      <p class="text-lg opacity-85">Your Event. Your Code.</p>
+    </div>
+
+    <!-- RIGHT SECTION -->
+    <div class="flex flex-1 items-center justify-center bg-white">
+      <div class="w-full max-w-sm text-center">
+        <p class="text-2xl font-semibold mb-6 text-teal-600">Get Started</p>
+        <div class="flex flex-col gap-4">
+          <button onclick="window.location.href='Login.html'" class="bg-teal-600 text-white font-semibold py-3 rounded-full shadow hover:bg-teal-700 transition">Log In</button>
+          <button class="bg-white text-teal-600 font-semibold py-3 rounded-full border-2 border-teal-600 hover:bg-teal-50 transition">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="Script.js"></script>
+
+</body>
+</html>

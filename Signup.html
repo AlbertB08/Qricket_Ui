@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Qricket - Sign Up</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="h-screen bg-gray-100">
+        <div class="flex h-screen flex-col md:flex-row">
+        
+                 <!-- LEFT SECTION -->
+                 <div class="flex flex-1 flex-col items-center justify-center p-10 text-white" style="background: linear-gradient(135deg, #00B388 50%, #009970 100%);">
+                   <h1 id="changing-text" class="text-3xl font-bold mb-2 transition-opacity duration-300">Welcome To Qricket</h1>
+                   <p class="text-lg opacity-85">Your Event. Your Code.</p>
+                </div>
+
+
+            <!-- Right Section -->
+            <div class="flex-1 flex items-center justify-center bg-white">
+            <div class="w-full max-w-sm text left">
+                <h2 class="text-2xl mt-4 font-bold text-[#00B388] mb-4">Create Account</h2>
+                <p class="text-gray-600 font-semibold mb-4">Find, Book, and enjoy events hassle free!</p>
+
+                <form action="Main.html" method="post" class="flex flex-col gap-4">
+                    <div>
+                        <label class="text-sm text-gray-700">Name</label>
+                        <input type="text" name="name" placeholder="Name" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#00B388]" required />
+
+                    </div>
+                    <!--Last name  place holder-->
+
+                    <div>
+                        <label class="text-sm text-gray-700">Last Name</label>
+                        <input type="text" name="lastname" placeholder="Last Name" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#00B388]" required />
+                    </div>
+                    <!--Email Place holder-->
+                    <div>
+                        <label class="text-sm text-gray-700">Email</label>
+                        <input type="email" name="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#00B388]" required />
+                          
+                    </div>
+                    <!--Password place holder-->
+                    <div>
+                        <label class="text-sm text-gray-700">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#00B388]" required />
+                    </div> 
+
+                    <button type="submit"
+                    class="bg-[#00b388] mt-5 text-white font-semibold py-3 rounded-lg shadow hover:bg-teal-700 transition">
+                        Sign Up
+                    </button>
+                    <p class="text-sm text-gray-500 text-center mt-2">
+                        Already hava an account?
+                        <a href="Login.html" class="text-[#00B308] underline">Log in here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+
+        
+       <script src="Script.js"></script>
+    </body>
+</html>

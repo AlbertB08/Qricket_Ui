@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Role | Qricket</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    
+    <!-- LEFT SECTION -->
+    <div class="flex flex-col justify-center items-start flex-1 p-16 text-[#00B388]">
+   
+    </div>
+
+    <!-- RIGHT SECTION -->
+    <div class="flex flex-1 bg-[#00B388] text-white p-10">
+      <div class="flex flex-col justify-center items-center w-full">
+        <div class="w-full max-w-md">
+          <h2 class="text-2xl font-bold mb-2 text-white text-center">CHOOSE YOUR ROLE</h2>
+          <p class="text-center text-sm text-white opacity-80 mb-6">Are you here to buy tickets or organize events?</p>
+
+          <!-- ROLE OPTIONS -->
+          <form class="flex flex-col gap-4">
+            <!-- Attendee -->
+            <label class="flex items-start gap-4 p-4 bg-white text-black rounded-lg shadow cursor-pointer">
+              <input type="radio" name="role" value="attendee" class="mt-1 accent-[#00B388]" checked>
+              <div>
+                <span class="block font-semibold">Attendee</span>
+                <span class="block text-sm text-gray-600">I'm attending events and buying tickets.</span>
+              </div>
+            </label>
+
+            <!-- Organizer -->
+            <label class="flex items-start gap-4 p-4 bg-white text-black rounded-lg shadow cursor-pointer">
+              <input type="radio" name="role" value="organizer" class="mt-1 accent-[#00B388]">
+              <div>
+                <span class="block font-semibold">Event Organizer</span>
+                <span class="block text-sm text-gray-600">I'm organizing events and selling tickets.</span>
+              </div>
+            </label>
+          </form>
+
+          <!-- Login Link -->
+          <p class="text-sm text-white mt-6 text-center">
+            Already have an account? 
+            <a href="login.html" class="underline font-semibold">Log in</a>
+          </p>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-xs text-white opacity-70 mt-10">&copy; Qricket. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

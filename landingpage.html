@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qricket</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!--Nav bar-->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      
+      <!-- Logo -->
+      <a href="#" class="text-[#00B388] text-2xl font-bold">Qricket</a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-6 text-gray-700 font-medium">
+        <a href="#" class="hover:text-[#00B388]">Home</a>
+        <a href="#" class="hover:text-[#00B388]">About</a>
+        <a href="#" class="hover:text-[#00B388]">Services</a>
+        <a href="#" class="hover:text-[#00B388]">Contact</a>
+      </nav>
+
+      <!-- Sign In (desktop) -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="#" class="text-[#00B388] border border-[#00B388] px-4 py-2 rounded hover:bg-[#00B388] hover:text-white transition">Sign In</a>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-40 transform -translate-x-full transition-transform duration-300 md:hidden">
+    <div class="p-6">
+      <h2 class="text-2xl font-bold text-[#00B388] mb-4">Qricket</h2>
+      <nav class="flex flex-col space-y-4 text-gray-700 font-medium">
+        <a href="#" class="hover:text-[#00B388]">Home</a>
+        <a href="#" class="hover:text-[#00B388]">About</a>
+        <a href="#" class="hover:text-[#00B388]">Services</a>
+        <a href="#" class="hover:text-[#00B388]">Contact</a>
+        <a href="#" class="bg-[#00B388] text-white text-center py-2 rounded-lg hover:bg-[#009970] transition">Sign In</a>
+      </nav>
+    </div>
+  </div>
+    <!-- Hero Section -->
+     <section class="bg-white py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10">
+
+            <!--Left Text Content-->
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Qricket</h1>
+                <p class="text-gray-600 mb-6">Your one-stop solution for all your QR code needs. Create, scan, and manage QR codes effortlessly.</p>
+                
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#" class="bg-[#00B388] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#009970] transition">Browse Events</a>
+                    <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-[#e6f9f4] transition">Host Your Events</a>
+                </div>
+            </div>
+
+            <!--Right Content-->
+           <div class="w-full max-w-md h-64 bg-gray-200 flex items-center justify-center text-gray-500 rounded-lg shadow-md">
+                 Image Placeholder
+          </div>    
+
+        </div>
+     </section>
+
+        <!-- Second Section -->
+
+        <section class="bg-gray-100 py-16 px-6">
+            <div class="max-w-7xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">How it Works</h2>
+                <p class="text-gray-600">Get Started with Qrickets in just a few steps</p>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
+               <!--Step 1-->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                <div class="flex justify center mb-4">
+                    <img src="https://via.placeholder.com/50" alt="Step 1" class="w-20 h-20">
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Create or Join Events</h3>
+                <p class="text-gray-600">Organizer can set up event,  while users can browse event and join in seconds.</p>
+            </div>
+
+
+            <!--Step 2-->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                <div class="flex justify center mb-4">
+                    <img src="https://via.placeholder.com/50" alt="Step 2" class="w-20 h-20">
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Scan QR Codes</h3>
+                <p class="text-gray-600">Use our app to scan QR codes for quick access to event details and check-ins.</p>
+            </div>
+
+
+             <!--Step 3-->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                <div class="flex justify center mb-4">
+                    <img src="https://via.placeholder.com/50" alt="Step 3" class="w-20 h-20">
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Scan QR Codes</h3>
+                <p class="text-gray-600">Use our app to scan QR codes for quick access to event details and check-ins.</p>
+            </div>
+           
+         </section>
+
+         <!--3rd Section-->
+
+         <section class="bg-white py-16 px-6">
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured Events</h2>
+    <p class="text-gray-600">Discover upcoming experiences you'll love.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
+
+    <!-- Event 1 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+      <div class="flex justify-center mb-4">
+        <img src="https://via.placeholder.com/300x180" alt="Music Festival" class="rounded-md w-full h-auto">
+      </div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-1">Music Festival 2025</h3>
+      <p class="text-sm text-gray-600 mb-2">📅 July 20, 2025 | 📍 Manila</p>
+      <p class="text-gray-600 mb-4">An open-air concert featuring local and international artists.</p>
+      <a href="#" class="inline-block bg-[#00B388] text-white px-4 py-2 rounded-full font-semibold hover:bg-[#009970] transition">View Details</a>
+    </div>
+
+    <!-- Event 2 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+      <div class="flex justify-center mb-4">
+        <img src="https://via.placeholder.com/300x180" alt="Startup Night" class="rounded-md w-full h-auto">
+      </div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-1">Startup Pitch Night</h3>
+      <p class="text-sm text-gray-600 mb-2">📅 August 5, 2025 | 📍 Cebu</p>
+      <p class="text-gray-600 mb-4">Entrepreneurs and investors meet to share ideas and build the future.</p>
+      <a href="#" class="inline-block bg-[#00B388] text-white px-4 py-2 rounded-full font-semibold hover:bg-[#009970] transition">View Details</a>
+    </div>
+
+    <!-- Event 3 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+      <div class="flex justify-center mb-4">
+        <img src="https://via.placeholder.com/300x180" alt="Food Fair" class="rounded-md w-full h-auto">
+      </div>
+      <h3 class="text-xl font-semibold text-gray-800 mb-1">Food & Culture Fair</h3>
+      <p class="text-sm text-gray-600 mb-2">📅 Sept 10, 2025 | 📍 Davao</p>
+      <p class="text-gray-600 mb-4">Enjoy diverse cuisines and performances celebrating local culture.</p>
+      <a href="#" class="inline-block bg-[#00B388] text-white px-4 py-2 rounded-full font-semibold hover:bg-[#009970] transition">View Details</a>
+    </div>
+
+  </div>
+</section>
+
+
+  <section class="bg-gray-100 py-16 px-6">
+    <div class="max-w-7xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Planning an Event?</h2>
+      <p class="text-gray-600">Join Qricket as an organizer today and experiences powerful tools 
+        for managing your events, analytics for performances. </p>
+
+        <a href="#" class="inline-block bg-[#00B388] text-white mt-5 px-9 py-5 rounded-lg font-semibold hover:bg-[#009970] transition">View Details</a>
+         <a href="#" class="inline-block bg-white text-[#00B388] ml-4 mt-5 px-9 py-5 rounded-lg font-semibold transition">Learn More</a>
+
+    </div>
+
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#00B388] text-white py-10 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+
+    <!-- Logo -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Qricket</h2>
+      <p class="text-sm">Your event, your code. Effortless ticketing and QR-based check-ins for everyone.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:underline">Home</a></li>
+        <li><a href="#" class="hover:underline">Events</a></li>
+        <li><a href="#" class="hover:underline">Login</a></li>
+        <li><a href="#" class="hover:underline">Sign Up</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact + Social Icons -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Contact</h3>
+      <p class="text-sm mb-2">Email: support@qricket.com</p>
+      <p class="text-sm mb-4">Phone: +63 912 345 6789</p>
+
+      <!-- Social Media Icon Placeholders -->
+      <div class="flex space-x-3 mt-2">
+        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#00B388] font-bold text-sm">F</div>
+        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#00B388] font-bold text-sm">T</div>
+        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#00B388] font-bold text-sm">I</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="mt-10 text-center text-sm border-t border-white border-opacity-20 pt-4">
+    &copy; 2025 Qricket. All rights reserved.
+  </div>
+</footer>
+
+
+
+
+  <!-- Toggle Script -->
+  <script src="Script.js"></script>
+</body>
+</html>
