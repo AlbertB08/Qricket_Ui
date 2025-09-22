@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QRicket Organizer Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-[#00B388] text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-50">
+    <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
+      <h1 class="text-xl font-bold">QRicket</h1>
+      <button onclick="toggleSidebar()" class="lg:hidden">✕</button>
+    </div>
+    <nav class="px-4 py-6 space-y-3">
+      <a href="#" class="block py-2 px-4 rounded bg-[#009970]">Dashboard</a>
+      <a href="#" class="block py-2 px-4 rounded hover:bg-[#009970]">Bookings</a>
+      <a href="#" class="block py-2 px-4 rounded hover:bg-[#009970]">Invoices</a>
+      <a href="#" class="block py-2 px-4 rounded hover:bg-[#009970]">Events</a>
+      <a href="#" class="block py-2 px-4 rounded hover:bg-[#009970]">Analytics</a>
+    </nav>
+  </aside>
+
+  <!-- Overlay for mobile -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden z-40" onclick="toggleSidebar()"></div>
+
+  <!-- Main Content -->
+  <div class="flex-1 lg:ml-64 flex flex-col">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center bg-white shadow px-6 py-4">
+      <div class="flex items-center space-x-4">
+        <button onclick="toggleSidebar()" class="lg:hidden">☰</button>
+        <input type="text" placeholder="Search anything" class="px-4 py-2 border rounded-lg w-56 md:w-64 hidden md:block">
+      </div>
+      <div class="flex items-center space-x-3">
+        <button class="relative p-2 rounded-full hover:bg-gray-100" aria-label="Notifications">
+          🔔
+          <span class="absolute -top-0.5 -right-0.5 inline-flex h-2 w-2 rounded-full bg-pink-500"></span>
+        </button>
+        <button class="hidden sm:inline-flex items-center bg-[#00B388] text-white px-3 sm:px-4 py-2 rounded-full text-sm" onclick="toggleCreateModal(true)">Create Event</button>
+        <span class="font-semibold hidden xs:block">Orlando</span>
+        <img src="https://via.placeholder.com/40" class="w-10 h-10 rounded-full">
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="p-6 space-y-6">
+
+      <!-- Top Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-sm text-gray-500">Total Events</h3>
+          <p class="text-2xl font-bold" id="statTotalEvents">24</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-sm text-gray-500">Active Events</h3>
+          <p class="text-2xl font-bold" id="statActiveEvents">7</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-sm text-gray-500">Total Attendees</h3>
+          <p class="text-2xl font-bold" id="statAttendees">12,540</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-sm text-gray-500">Revenue</h3>
+          <p class="text-2xl font-bold" id="statRevenue">$348,805</p>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="flex flex-wrap gap-3">
+        <button class="inline-flex items-center gap-2 bg-[#00B388] text-white px-4 py-2 rounded-full text-sm" onclick="toggleCreateModal(true)">Create New Event</button>
+        <button class="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-full text-sm shadow-sm">Generate Reports</button>
+        <button class="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-full text-sm shadow-sm">Export Data</button>
+      </div>
+
+      <!-- Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold">Sales Revenue</h3>
+            <select id="revenueRange" class="text-sm border rounded-md px-2 py-1">
+              <option value="today">Today</option>
+              <option value="week" selected>This Week</option>
+              <option value="months">Last 8 Months</option>
+            </select>
+          </div>
+          <div class="h-56">
+            <canvas id="revenueChart" class="h-full w-full"></canvas>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow xl:col-span-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold">Ticket Breakdown</h3>
+            <select id="ticketRange" class="text-sm border rounded-md px-2 py-1">
+              <option value="today">Today</option>
+              <option value="week" selected>This Week</option>
+              <option value="months">Last 8 Months</option>
+            </select>
+          </div>
+          <div class="h-56">
+            <canvas id="ticketChart" class="h-full w-full"></canvas>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow xl:col-span-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold">Event Performance</h3>
+            <select id="performanceRange" class="text-sm border rounded-md px-2 py-1">
+              <option value="today">Today</option>
+              <option value="week" selected>This Week</option>
+              <option value="months">Last 8 Months</option>
+            </select>
+          </div>
+          <div class="h-56">
+            <canvas id="performanceChart" class="h-full w-full"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Management Panels -->
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <!-- Events Management -->
+        <section class="bg-white p-6 rounded-lg shadow xl:col-span-1">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Your Events</h3>
+            <button class="text-sm text-[#00B388] hover:underline" onclick="toggleCreateModal(true)">+ New</button>
+          </div>
+          <ul id="eventsList" class="space-y-3">
+            <li class="border rounded-lg p-3 flex items-center justify-between">
+              <div>
+                <p class="font-medium">Tech Summit 2025</p>
+                <p class="text-xs text-gray-500">Apr 20, 2025 • Manila</p>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">Published</span>
+            </li>
+            <li class="border rounded-lg p-3 flex items-center justify-between">
+              <div>
+                <p class="font-medium">Rhythm & Beats Festival</p>
+                <p class="text-xs text-gray-500">May 12, 2025 • LA</p>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-full bg-yellow-100 text-yellow-700">Draft</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Recent Bookings -->
+        <section class="bg-white p-6 rounded-lg shadow xl:col-span-2">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Recent Bookings</h3>
+            <a href="#" class="text-sm text-[#00B388] hover:underline">View all</a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="text-left text-gray-500 border-b">
+                  <th class="py-2 pr-6">Customer</th>
+                  <th class="py-2 pr-6">Event</th>
+                  <th class="py-2 pr-6">Tickets</th>
+                  <th class="py-2 pr-6">Amount</th>
+                  <th class="py-2">Status</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsBody">
+                <tr class="border-b">
+                  <td class="py-2 pr-6">Aisha Khan</td>
+                  <td class="py-2 pr-6">Tech Summit 2025</td>
+                  <td class="py-2 pr-6">3</td>
+                  <td class="py-2 pr-6">$180</td>
+                  <td class="py-2"><span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">Paid</span></td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-6">John Lee</td>
+                  <td class="py-2 pr-6">Rhythm & Beats</td>
+                  <td class="py-2 pr-6">2</td>
+                  <td class="py-2 pr-6">$120</td>
+                  <td class="py-2"><span class="text-xs px-2 py-1 rounded-full bg-yellow-100 text-yellow-700">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Customer Questions -->
+      <section class="bg-white p-6 rounded-lg shadow">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold">Customer Questions</h3>
+          <button class="text-sm text-[#00B388] hover:underline">Go to inbox</button>
+        </div>
+        <div class="divide-y" id="questionsList">
+          <div class="py-3 flex items-start justify-between">
+            <div>
+              <p class="font-medium">Refund policy?</p>
+              <p class="text-xs text-gray-500">Maria • about Tech Summit 2025</p>
+            </div>
+            <button class="text-sm text-[#00B388]">Reply</button>
+          </div>
+          <div class="py-3 flex items-start justify-between">
+            <div>
+              <p class="font-medium">Is there VIP seating available?</p>
+              <p class="text-xs text-gray-500">Leo • Rhythm & Beats</p>
+            </div>
+            <button class="text-sm text-[#00B388]">Reply</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Create Event Modal -->
+<div id="createModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50" onclick="toggleCreateModal(false)"></div>
+  <div class="relative max-w-lg mx-auto mt-24 bg-white rounded-xl shadow-lg p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold">Create Event</h3>
+      <button class="text-gray-500" onclick="toggleCreateModal(false)">✕</button>
+    </div>
+    <form id="createEventForm" class="space-y-4">
+      <div>
+        <label class="text-sm text-gray-600">Event name</label>
+        <input id="eventName" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Enter event name" required>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm text-gray-600">Date</label>
+          <input id="eventDate" type="date" class="mt-1 w-full border rounded-lg px-3 py-2" required>
+        </div>
+        <div>
+          <label class="text-sm text-gray-600">City</label>
+          <input id="eventCity" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="City" required>
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-gray-600">Status</label>
+        <select id="eventStatus" class="mt-1 w-full border rounded-lg px-3 py-2">
+          <option value="Published">Published</option>
+          <option value="Draft">Draft</option>
+        </select>
+      </div>
+      <div class="flex justify-end gap-3 pt-2">
+        <button type="button" class="px-4 py-2 rounded-lg border" onclick="toggleCreateModal(false)">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-lg bg-[#00B388] text-white">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- JS for Sidebar and Modal -->
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('-translate-x-full');
+    overlay.classList.toggle('hidden');
+  }
+
+  function toggleCreateModal(show) {
+    const modal = document.getElementById('createModal');
+    if (show) {
+      modal.classList.remove('hidden');
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
+
+  // Charts
+  const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+  const revenueDatasets = {
+    today: {
+      labels: ['8am','10am','12pm','2pm','4pm','6pm','8pm'],
+      data: [1200, 2400, 1800, 2600, 3000, 2100, 1700]
+    },
+    week: {
+      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      data: [12000, 14500, 13800, 16200, 17500, 22000, 19000]
+    },
+    months: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
+      data: [30000, 40000, 35000, 56000, 45000, 48000, 52000, 60000]
+    }
+  };
+
+  const revenueChart = new Chart(revenueCtx, {
+    type: 'bar',
+    data: {
+      labels: revenueDatasets.week.labels,
+      datasets: [{
+        label: 'Revenue',
+        data: revenueDatasets.week.data,
+        backgroundColor: '#00B388'
+      }]
+    },
+    options: { 
+      responsive: true, 
+      maintainAspectRatio: false,
+      animation: {
+        duration: 800,
+        easing: 'easeInOutQuart'
+      }
+    }
+  });
+
+  const revenueRange = document.getElementById('revenueRange');
+  revenueRange.addEventListener('change', function() {
+    const ds = revenueDatasets[this.value];
+    revenueChart.data.labels = ds.labels;
+    revenueChart.data.datasets[0].data = ds.data;
+    revenueChart.update();
+  });
+
+  const ticketCtx = document.getElementById('ticketChart').getContext('2d');
+  const ticketDatasets = {
+    today: [
+      { label: 'Sold Out', value: 120 },
+      { label: 'Booked', value: 90 },
+      { label: 'Available', value: 40 }
+    ],
+    week: [
+      { label: 'Sold Out', value: 650 },
+      { label: 'Booked', value: 430 },
+      { label: 'Available', value: 280 }
+    ],
+    months: [
+      { label: 'Sold Out', value: 1250 },
+      { label: 'Booked', value: 834 },
+      { label: 'Available', value: 695 }
+    ]
+  };
+
+  function toChartData(items) {
+    return {
+      labels: items.map(i => i.label),
+      datasets: [{
+        data: items.map(i => i.value),
+        backgroundColor: ['#00B388','#009970','#33CC99']
+      }]
+    };
+  }
+
+  const ticketChart = new Chart(ticketCtx, {
+    type: 'doughnut',
+    data: toChartData(ticketDatasets.week),
+    options: { responsive: true, maintainAspectRatio: false }
+  });
+
+  const ticketRange = document.getElementById('ticketRange');
+  ticketRange.addEventListener('change', function() {
+    ticketChart.data = toChartData(ticketDatasets[this.value]);
+    ticketChart.update();
+  });
+
+  // Event Performance Line Chart
+  const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+  const performanceDatasets = {
+    today: {
+      labels: ['8am','10am','12pm','2pm','4pm','6pm','8pm'],
+      attendees: [45, 78, 92, 156, 134, 89, 67],
+      tickets: [120, 180, 220, 340, 290, 210, 180]
+    },
+    week: {
+      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      attendees: [450, 520, 680, 720, 890, 1200, 980],
+      tickets: [1200, 1400, 1650, 1800, 2100, 2800, 2400]
+    },
+    months: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
+      attendees: [1200, 1450, 1680, 2100, 1950, 2250, 2400, 2600],
+      tickets: [3000, 3600, 4200, 5100, 4800, 5400, 5800, 6200]
+    }
+  };
+
+  const performanceChart = new Chart(performanceCtx, {
+    type: 'line',
+    data: {
+      labels: performanceDatasets.week.labels,
+      datasets: [{
+        label: 'Attendees',
+        data: performanceDatasets.week.attendees,
+        borderColor: '#00B388',
+        backgroundColor: 'rgba(0, 179, 136, 0.1)',
+        tension: 0.4,
+        fill: true
+      }, {
+        label: 'Tickets Sold',
+        data: performanceDatasets.week.tickets,
+        borderColor: '#009970',
+        backgroundColor: 'rgba(0, 153, 112, 0.1)',
+        tension: 0.4,
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 800,
+        easing: 'easeInOutQuart'
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const performanceRange = document.getElementById('performanceRange');
+  performanceRange.addEventListener('change', function() {
+    const ds = performanceDatasets[this.value];
+    performanceChart.data.labels = ds.labels;
+    performanceChart.data.datasets[0].data = ds.attendees;
+    performanceChart.data.datasets[1].data = ds.tickets;
+    performanceChart.update();
+  });
+
+  // Create Event form handler
+  const createForm = document.getElementById('createEventForm');
+  if (createForm) {
+    createForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('eventName').value.trim();
+      const date = document.getElementById('eventDate').value;
+      const city = document.getElementById('eventCity').value.trim();
+      const status = document.getElementById('eventStatus').value;
+      if (!name || !date || !city) return;
+
+      const list = document.getElementById('eventsList');
+      const li = document.createElement('li');
+      li.className = 'border rounded-lg p-3 flex items-center justify-between';
+      li.innerHTML = `
+        <div>
+          <p class="font-medium">${name}</p>
+          <p class="text-xs text-gray-500">${new Date(date).toLocaleDateString()} • ${city}</p>
+        </div>
+        <span class="text-xs px-2 py-1 rounded-full ${status === 'Published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}">${status}</span>
+      `;
+      list.prepend(li);
+
+      toggleCreateModal(false);
+      createForm.reset();
+    });
+  }
+</script>
+</body>
+</html>

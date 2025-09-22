@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qricket | Browse Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-[#00B388] text-2xl font-bold">Qricket</a>
+      <nav class="hidden md:flex space-x-6 text-gray-700 font-medium">
+        <a href="#" class="hover:text-[#00B388]">Home</a>
+        <a href="#" class="hover:text-[#00B388]">Browse Events</a>
+        <a href="#" class="hover:text-[#00B388]">My Tickets</a>
+        <a href="#" class="hover:text-[#00B388]">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search + Categories -->
+  <section class="bg-white shadow px-6 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      
+      <!-- Search Bar -->
+      <div class="flex-1">
+        <input type="text" placeholder="Search for events..." 
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#00B388] focus:outline-none">
+      </div>
+      
+      <!-- Categories -->
+      <div class="flex space-x-3 overflow-x-auto">
+        <button class="px-4 py-2 bg-[#00B388] text-white rounded-full hover:bg-[#009970] transition">All</button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">Music</button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">Tech</button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">Food</button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">Sports</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Grid -->
+  <section class="max-w-7xl mx-auto px-6 py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Event Card -->
+      <div class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
+        <img src="https://via.placeholder.com/400x200" alt="Event" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-800 mb-1">Music Fest 2025</h3>
+          <p class="text-sm text-gray-500 mb-2">April 5, 2025 • Manila</p>
+          <p class="text-gray-700 text-sm mb-4">Enjoy live performances and food trucks.</p>
+          <a href="#" class="inline-block bg-[#00B388] text-white px-5 py-2 rounded-full font-semibold hover:bg-[#009970] transition">
+            View Details
+          </a>
+        </div>
+      </div>
+
+      <!-- Duplicate more cards as needed -->
+
+    </div>
+  </section>
+
+  <!-- Load More Button -->
+  <div class="text-center pb-10">
+    <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition">
+      Load More
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#00B388] text-white py-10 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <h2 class="text-2xl font-bold mb-2">Qricket</h2>
+        <p class="text-sm">Your event, your code. Effortless ticketing and QR-based check-ins for everyone.</p>
+      </div>
+      <div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Browse Events</a></li>
+          <li><a href="#" class="hover:underline">My Tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Contact</h3>
+        <p class="text-sm">support@qricket.com</p>
+        <p class="text-sm mb-4">+63 912 345 6789</p>
+      </div>
+    </div>
+    <div class="mt-10 text-center text-sm border-t border-white border-opacity-20 pt-4">
+      &copy; 2025 Qricket. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
