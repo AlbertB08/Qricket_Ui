@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Layout 2 - Placeholder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Hero with Carousel -->
+  <section class="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] flex items-center justify-center text-center text-white overflow-hidden">
+    <!-- Carousel images -->
+    <div id="heroCarousel" class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 transition-opacity duration-700 opacity-100">
+        <img src="img/Layout Image/Front.png" alt="Slide 1" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute inset-0 transition-opacity duration-700 opacity-0">
+        <img src="img/Layout Image/DSC01385.jpg" alt="Slide 2" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute inset-0 transition-opacity duration-700 opacity-0">
+        <img src="img/Layout Image/About img.jpg" alt="Slide 3" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="max-w-2xl px-4">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">[ Event Title Here ]</h1>
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-white/80">[ Short event tagline or description goes here ]</p>
+      <div class="mt-5 sm:mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
+        <a href="#tickets" class="bg-amber-400 text-gray-900 font-semibold px-4 py-2 text-sm sm:px-5 sm:py-3 sm:text-base rounded-full shadow hover:bg-amber-300">Get Ticket</a>
+        <a href="#about" class="border border-white/30 px-4 py-2 text-sm sm:px-5 sm:py-3 sm:text-base rounded-full text-white hover:bg-white/10">Learn More</a>
+      </div>
+      <!-- Controls -->
+      <div class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-3">
+        <button id="prevSlide" class="h-8 w-8 sm:h-9 sm:w-9 grid place-items-center rounded-full bg-white/80 text-gray-900 hover:bg-white">‹</button>
+        <div class="flex items-center gap-2" id="carouselDots"></div>
+        <button id="nextSlide" class="h-8 w-8 sm:h-9 sm:w-9 grid place-items-center rounded-full bg-white/80 text-gray-900 hover:bg-white">›</button>
+      </div>
+    </div>
+  </section>
+ 
+
+  <!-- Event Details -->
+  <section class="py-10 sm:py-12 bg-gray-50">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 px-4">
+      <div class="flex flex-col items-center text-center p-4 sm:p-6 bg-white shadow rounded-xl">
+        <div class="text-3xl">📅</div>
+        <h3 class="font-semibold mt-2">[ Date & Time ]</h3>
+        <p class="text-sm text-gray-600 mt-1">[ Placeholder text here ]</p>
+      </div>
+      <div class="flex flex-col items-center text-center p-4 sm:p-6 bg-white shadow rounded-xl">
+        <div class="text-3xl">📍</div>
+        <h3 class="font-semibold mt-2">[ Location ]</h3>
+        <p class="text-sm text-gray-600 mt-1">[ Placeholder text here ]</p>
+      </div>
+      <div class="flex flex-col items-center text-center p-4 sm:p-6 bg-white shadow rounded-xl">
+        <div class="text-3xl">🏷️</div>
+        <h3 class="font-semibold mt-2">[ Tags / Category ]</h3>
+        <p class="text-sm text-gray-600 mt-1">[ Placeholder text here ]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-14 sm:py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">[ About This Event ]</h2>
+      <p class="mt-3 sm:mt-4 text-gray-700 leading-7">[ Placeholder description text goes here. You can write about the event, the theme, or the community here. ]</p>
+      <div class="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div class="w-full h-48 sm:h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">[ Image Placeholder ]</div>
+        <div class="w-full h-48 sm:h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">[ Image Placeholder ]</div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Speakers -->
+   <section id="speakers" class="py-14 sm:py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-center">Featured Speakers</h2>
+      <p class="mt-3 text-center text-gray-600">Meet the people behind the stories, builds, and insights.</p>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Speaker card -->
+        <div class="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+          <div class="h-56 bg-gray-200">
+            <img src="https://placehold.co/600x400/png?text=Speaker+1" alt="Speaker 1" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-lg">Alex Ramirez</h3>
+                <p class="text-sm text-gray-600">Lead Fabricator · Autohaus</p>
+              </div>
+              <span class="text-xs rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5">10:30 AM</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-700">From concept to track-ready: building a reliable weekend racer.</p>
+            <div class="mt-3 flex items-center gap-2 text-gray-500">
+              <a href="#" class="hover:text-gray-700">𝕏</a>
+              <a href="#" class="hover:text-gray-700">in</a>
+              <a href="#" class="hover:text-gray-700">🌐</a>
+            </div>
+          </div>
+        </div>
+        <!-- Speaker card -->
+        <div class="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+          <div class="h-56 bg-gray-200">
+            <img src="https://placehold.co/600x400/png?text=Speaker+2" alt="Speaker 2" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-lg">Bianca Cruz</h3>
+                <p class="text-sm text-gray-600">Motorsport Photographer</p>
+              </div>
+              <span class="text-xs rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5">1:15 PM</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-700">Capturing speed: composition and storytelling trackside.</p>
+            <div class="mt-3 flex items-center gap-2 text-gray-500">
+              <a href="#" class="hover:text-gray-700">📸</a>
+              <a href="#" class="hover:text-gray-700">in</a>
+              <a href="#" class="hover:text-gray-700">🌐</a>
+            </div>
+          </div>
+        </div>
+        <!-- Speaker card -->
+        <div class="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+          <div class="h-56 bg-gray-200">
+            <img src="https://placehold.co/600x400/png?text=Speaker+3" alt="Speaker 3" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-lg">Kenji Tanaka</h3>
+                <p class="text-sm text-gray-600">ECU Tuning Specialist</p>
+              </div>
+              <span class="text-xs rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5">3:00 PM</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-700">Modern tuning strategies for daily-driven turbo platforms.</p>
+            <div class="mt-3 flex items-center gap-2 text-gray-500">
+              <a href="#" class="hover:text-gray-700">𝕏</a>
+              <a href="#" class="hover:text-gray-700">in</a>
+              <a href="#" class="hover:text-gray-700">🌐</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Photo Highlights under Speakers -->
+   <section id="photos" class="py-14 sm:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Photo Highlights</h2>
+        
+      </div>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="img/Layout Image/Front.png" alt="highlight 1" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="img/Layout Image/DSC01385.jpg" alt="highlight 2" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="img/Layout Image/About img.jpg" alt="highlight 3" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="img/Layout Image/Placeholder.jpg" alt="highlight 4" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="https://placehold.co/800x600/png?text=Photo+5" alt="highlight 5" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="https://placehold.co/800x600/png?text=Photo+6" alt="highlight 6" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="https://placehold.co/800x600/png?text=Photo+7" alt="highlight 7" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+        <div class="relative overflow-hidden rounded-xl shadow">
+          <img src="https://placehold.co/800x600/png?text=Photo+8" alt="highlight 8" class="w-full h-40 sm:h-48 object-cover hover:scale-105 transition-transform" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+   <!-- Frequently Asked Questions -->
+   <section id="faq" class="py-14 sm:py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-center">Frequently Asked Questions</h2>
+      <p class="mt-3 text-center text-gray-600">Everything you need to know about tickets, entry, and the venue.</p>
+      <div class="mt-8 space-y-3">
+        <details class="group rounded-xl border border-gray-200 bg-white p-4 open:shadow">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+            <span class="font-semibold">Can I upgrade my ticket later?</span>
+            <span class="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700 group-open:hidden">Open</span>
+            <span class="shrink-0 rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white hidden group-open:inline">Close</span>
+          </summary>
+          <div class="mt-2 text-sm text-gray-600">Yes. You can upgrade to VIP or Exhibitor as long as slots are available. Bring your original QR ticket at the registration desk.</div>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-white p-4 open:shadow">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+            <span class="font-semibold">Is parking included with my pass?</span>
+            <span class="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700 group-open:hidden">Open</span>
+            <span class="shrink-0 rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white hidden group-open:inline">Close</span>
+          </summary>
+          <div class="mt-2 text-sm text-gray-600">General Admission includes spectator parking. VIP and Exhibitor passes have priority parking zones near the main entrance.</div>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-white p-4 open:shadow">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+            <span class="font-semibold">Do I need to print my ticket?</span>
+            <span class="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700 group-open:hidden">Open</span>
+            <span class="shrink-0 rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white hidden group-open:inline">Close</span>
+          </summary>
+          <div class="mt-2 text-sm text-gray-600">No. We accept mobile QR codes at all gates. Make sure your phone is charged for scanning.</div>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-white p-4 open:shadow">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+            <span class="font-semibold">What time is load-in for exhibitors?</span>
+            <span class="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700 group-open:hidden">Open</span>
+            <span class="shrink-0 rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white hidden group-open:inline">Close</span>
+          </summary>
+          <div class="mt-2 text-sm text-gray-600">Exhibitor load-in starts at 6:00 AM via the service gate. A marshaling team will assist with placement.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tickets -->
+  <section id="tickets" class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold">[ Choose Your Ticket ]</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <div class="bg-white border rounded-xl p-6 shadow flex flex-col">
+          <h3 class="font-semibold text-lg">[ Ticket Type 1 ]</h3>
+          <p class="text-2xl font-bold mt-2">[ $XX ]</p>
+          <ul class="mt-3 text-sm text-gray-600 space-y-1">
+            <li>[ Benefit 1 ]</li><li>[ Benefit 2 ]</li><li>[ Benefit 3 ]</li>
+          </ul>
+          <button class="mt-auto bg-amber-400 hover:bg-amber-300 text-gray-900 font-semibold px-4 py-2 rounded-full">Get Ticket</button>
+        </div>
+        <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-6 shadow-lg flex flex-col">
+          <h3 class="font-semibold text-lg">[ Ticket Type 2 ]</h3>
+          <p class="text-2xl font-bold mt-2">[ $XX ]</p>
+          <ul class="mt-3 text-sm text-gray-700 space-y-1">
+            <li>[ Benefit 1 ]</li><li>[ Benefit 2 ]</li><li>[ Benefit 3 ]</li>
+          </ul>
+          <button class="mt-auto bg-gray-900 hover:bg-gray-800 text-white font-semibold px-4 py-2 rounded-full">Get Ticket</button>
+        </div>
+        <div class="bg-white border rounded-xl p-6 shadow flex flex-col">
+          <h3 class="font-semibold text-lg">[ Ticket Type 3 ]</h3>
+          <p class="text-2xl font-bold mt-2">[ $XX ]</p>
+          <ul class="mt-3 text-sm text-gray-600 space-y-1">
+            <li>[ Benefit 1 ]</li><li>[ Benefit 2 ]</li><li>[ Benefit 3 ]</li>
+          </ul>
+          <button class="mt-auto bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-full">Get Ticket</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div>
+          <h3 class="text-white font-semibold">Event Organizer</h3>
+          <p class="mt-3 text-sm">+63 917 123 4567<br>events@southswiftersph.com</p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold">Contact & Support</h3>
+          <p class="mt-3 text-sm">For questions or support, email or call us anytime.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold">Follow us</h3>
+          <div class="mt-3 flex gap-3">
+            <a href="#" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">f</a>
+            <a href="#" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">𝕏</a>
+            <a href="#" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">📸</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 border-t border-white/10 pt-6 text-sm text-gray-400">© <span id="year"></span> Qricket. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple hero carousel
+    const carousel = document.getElementById('heroCarousel');
+    if (carousel) {
+      const slides = Array.from(carousel.children).filter(el => el.tagName.toLowerCase() !== 'div' || !el.classList.contains('bg-black/40'));
+      let current = 0;
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      const dotsWrap = document.getElementById('carouselDots');
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.style.opacity = i === index ? '1' : '0';
+        });
+        Array.from(dotsWrap.children).forEach((d, i) => {
+          d.className = 'h-2.5 w-2.5 rounded-full ' + (i === index ? 'bg-white' : 'bg-white/50');
+        });
+      }
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'h-2.5 w-2.5 rounded-full ' + (i === 0 ? 'bg-white' : 'bg-white/50');
+        dot.addEventListener('click', () => { current = i; showSlide(current); resetAutoplay(); });
+        dotsWrap.appendChild(dot);
+      });
+
+      prevBtn?.addEventListener('click', () => { current = (current - 1 + slides.length) % slides.length; showSlide(current); resetAutoplay(); });
+      nextBtn?.addEventListener('click', () => { current = (current + 1) % slides.length; showSlide(current); resetAutoplay(); });
+
+      let timer = setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 4000);
+      function resetAutoplay() { clearInterval(timer); timer = setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 4000); }
+
+      showSlide(current);
+    }
+
+    // Small slider in highlight block
+    (function(){
+      const slider = document.getElementById('highlightSlider');
+      if (!slider) return;
+      const imgs = Array.from(slider.querySelectorAll('img'));
+      const dots = Array.from(document.querySelectorAll('[data-dot]'));
+      const pauseBtn = document.getElementById('highlightPause');
+      let idx = 0;
+      let paused = false;
+      let t = setInterval(next, 3500);
+      function render(){
+        imgs.forEach((img,i)=> img.style.opacity = i===idx ? '1':'0');
+        dots.forEach((d,i)=> d.className = 'h-2 w-2 rounded-full ' + (i===idx ? 'bg-indigo-600/80' : 'bg-black/30'));
+      }
+      function next(){ if(paused) return; idx = (idx+1)%imgs.length; render(); }
+      pauseBtn?.addEventListener('click', ()=>{ paused = !paused; pauseBtn.textContent = paused ? '▶️ Resume slide' : '⏸️ Pause slide'; });
+      dots.forEach((d,i)=> d.addEventListener('click', ()=>{ idx=i; render(); }));
+      render();
+    })();
+  </script>
+
+</body>
+</html>
